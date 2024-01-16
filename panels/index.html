@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>Tegro Pay</title>
+    <link href="css/bootstrap.min.css" rel="stylesheet" type="text/css"  />
+    <link href="css/style.css" rel="stylesheet" type="text/css"  />
+
+  </head>
+  <body>
+    <div id="wrapper">
+      <div class="auth-block" id="auth">
+
+        <div class="container">
+
+          <label for="basic-url" class="form-label"> <b>Ключи:</b> </label>
+          <div class="input-group mb-3">
+            <span class="input-group-text" id="basic-addon3">Public KEY</span>
+            <input type="text" placeholder="Публичный ключ (id) вашего магазина" name="shop_id"  class="form-control" id="basic-url" aria-describedby="basic-addon3">
+          </div>
+           <div class="input-group mb-3">
+            <span class="input-group-text" id="basic-addon4">Secret KEY</span>
+            <input type="text" placeholder="Введите SECRET KEY"  class="form-control" name="secret_key"  id="basic-url" aria-describedby="basic-addon4">
+          </div>
+          <div class="input-group mb-3">
+            <span class="input-group-text" id="basic-addon5">API KEY</span>
+            <input placeholder="Введите API KEY"  type="text" class="form-control" name="api_key" id="basic-url" aria-describedby="basic-addon5">
+          </div>
+
+          <div id="validationAuthFeedback" class="invalid-feedback"></div>
+          <button type="button" id="Authorization" class="btn btn-primary">Войти</button>
+        </div>
+      </div>
+
+
+      <div class="auth-block none" id="orderCreate">
+
+        <div class="container">
+          <label for="basic-url" class="form-label"> <b>Выставить счет:</b> </label>
+          <div class="input-group mb-3">
+            <span class="input-group-text" id="basic-addon7">Валюта</span>
+
+            <select class="form-select" name="currency"  aria-label="Default select example" aria-describedby="basic-addon7">
+              <option selected>RUB</option>
+              <option >USD</option>
+              <option >EUR</option>
+            </select>
+          </div>
+
+          <div class="input-group mb-3">
+            <span class="input-group-text" id="basic-addon15">Стоимость</span>
+            <input placeholder="Введите сумму"  type="number" class="form-control" name="amount"  aria-describedby="basic-addon15">
+          </div>
+
+          <div id="validationCreateOrderFeedback" class="invalid-feedback"></div>
+          <button type="button" id="create" class="btn btn-primary">Сгенерировать счет</button>
+        </div>
+      </div>
+
+
+      <div class="auth-block " id="lists">
+
+        <div class="container">
+          <label for="basic-url" class="form-label"> <b>Счета на оплату:</b> </label>
+          <table class="table">
+            <thead>
+              <tr>
+                <th scope="col">#</th>
+                <th scope="col">Счет на оплату</th>
+                <th scope="col">Время</th>
+                <th scope="col">Действие</th>
+              </tr>
+            </thead>
+            <tbody>
+              <!-- <tr>
+                <th scope="row">1</th>
+                <td><button class="btn btn-primary" data-open="">Открыть</button></td>
+                <td>Otto</td>
+                <td>
+                  <button type="button"  class="btn btn-danger" data-delete="">Удалить</button>
+                </td>
+              </tr> -->
+
+            </tbody>
+          </table>
+
+        </div>
+      </div>
+
+    </div>
+
+    <script src="js/sha256.min.js"></script>
+    <script src="js/md5.min.js"></script>
+    <script src="js/script.js"></script>
+  </body>
+</html>

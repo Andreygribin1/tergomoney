@@ -1,0 +1,39 @@
+
+body {
+  background: #f5f6fa;
+  padding: 0px;
+  margin: 0px;
+  font-family: "Roboto";
+  overflow: auto;
+
+  display: flex;
+
+}
+#wrapper {
+
+
+  overflow: hidden;
+  width: 800px;
+  display: table;
+  margin: 20px auto;
+}
+
+#wrapper > div{
+  background: #ffffff;
+  padding: 15px;
+  margin-top: 10px;
+}
+
+.none{
+  display: none !important;
+}
+
+.show{
+  display: block !important;
+}
+
+.invalid-feedback{
+  text-align: center;
+  margin-bottom: 10px;
+  font-size:18px;
+}
