@@ -1,32 +1,42 @@
-# tergo-money
+## Overview
+Tegro Pay Extension allows users to create payment invoices using the API from [Tegro.money](https://tegro.money/). This extension is designed to streamline the process of generating and managing payment requests directly from your browser.
 
-Расширение Tegro Pay позволяет создавать счета на оплату используя api "https://tegro.money/".
+## Architecture
 
-Общая архитектура:
-manifest.json - файл конфигураций расширения. Используется версия манифеста v3. Разрешения(permissions) на использование локального хранилища "storage" (для хранения локальных данных) и разрешение запросов на адрес "https://tegro.money/api/*".
+### manifest.json
+- **Configuration**: This file contains the extension's configuration settings.
+- **Manifest Version**: Uses manifest version 3.
+- **Permissions**:
+  - `storage`: Permission to use local storage for storing local data.
+  - Network requests permission for [Tegro Pay API](https://tegro.money/docs/).
 
-icon - В папке хранятся иконки расширения
+### Icons
+- **Location**: Icons for the extension are stored in the icon folder.
 
-background_scripts/background.js - background скрипт расширения, нужен для возможности открытия страницы при клике на значок.
+### Background Scripts
+- **File**: `background_scripts/background.js`
+- **Purpose**: A background script of the extension, essential for opening a page when clicking on the extension icon.
 
-В папке panels лежат стили, скрипты и html разметка основной страницы расширения.
+### Panels Folder
+- Contains styles, scripts, and HTML markup for the main page of the extension.
 
-Отдельно стоит остановится на скриптах:
-md5.min.js - библиотека js для шифрования данных md5
-sha256.min.js - библиотека js для шифрования данных sha256
+## Scripts
 
-script.js - Здесь описана основная логика по работе:
+### md5.min.js
+- **Description**: A JavaScript library for MD5 data encryption.
 
-Функция auth() - отвечает за авторизацию по ключам Public KEY и API KEY, а также валидацию полей авторизации.
+### sha256.min.js
+- **Description**: A JavaScript library for SHA256 data encryption.
 
-функция createPay() - Отвечает для формирования данных оплаты перед отправкой, в том числе шифрование.
+### script.js
+- **Main Logic**: The core functionality of the extension is defined here.
+  - **auth() Function**: Handles authorization using Public KEY and API KEY, along with the validation of authorization fields.
+  - **createPay() Function**: Responsible for forming payment data before sending, including encryption.
+  - **createElement() Function**: Creates and sends a payment form.
+  - **showError() Function**: Displays errors under the data entry fields.
+  - **addLists() Function**: Adds and saves payment invoice parameters after generation.
+  - **removeList() Function**: Removes an invoice from the payment list.
+  - **renderList() Function**: Displays a list of saved invoices.
 
-Функция createElement() - создает и отправляет форму на оплату
-
-Функция showError() - Выводит ошибки под полями ввода данных.
-
-Функция addLists() - Добавляет и сохраняет параметры счета на оплату после его генерации.
-
-Функция removeList() - Удаляет счет из списка оплату
-
-Функция renderList() - Выводит список сохраненных счетов.
+## Conclusion
+The Tegro Pay Extension is a comprehensive tool for managing payment invoices efficiently. Its well-structured architecture and robust scripting ensure a seamless user experience for generating and handling payment requests.
