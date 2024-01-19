@@ -4,18 +4,16 @@ body {
   padding: 0px;
   margin: 0px;
   font-family: "Roboto";
-  overflow: auto;
-
-  display: flex;
+  overflow: hidden;
 
 }
 #wrapper {
 
 
   overflow: hidden;
-  width: 800px;
+  width: 600px;
   display: table;
-  margin: 20px auto;
+  margin: 20px;
 }
 
 #wrapper > div{

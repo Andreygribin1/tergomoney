@@ -15,13 +15,23 @@
   let authData;
 
   chrome.storage.local.get(function(data){
+    console.log(data);
+    if(data.state){
+      fieldShopId.value = data.state.shop_id ?? '';
+      fieldApiKey.value = data.state.api_key ?? '';
+      fieldSecretKey.value = data.state.secret_key ?? '';
+    }
     if(data.auth){
       fieldShopId.value = data.auth.shop_id;
       fieldApiKey.value = data.auth.api_key;
       fieldSecretKey.value = data.auth.secret_key;
-      buttonAuth.innerText = 'Изменить';
+      buttonAuth.innerText = 'Change';
       blockOrderCreate.classList.remove('none');
       authData = data.auth;
+    }
+
+    if(data.lists){
+      document.querySelector('#lists').classList.remove('none');
     }
   })
 
@@ -77,7 +87,7 @@
           let data = {
             'amount': parseInt(params.amount),
             'currency': params.currency, //RUB/USD/EUR,
-              'order_id': String(new Date().getTime()),
+              'order_id': params.orderId,
               'shop_id': authData.shop_id,
 
 
@@ -92,7 +102,7 @@
           }
 
           str = arr.join('&');
-          console.log(str, authData.secret_key);
+          // console.log(str, authData.secret_key);
           let sign = md5(str + authData.secret_key);
 
           data['sign'] = sign;
@@ -124,7 +134,8 @@
     }
 
     chrome.storage.local.set({ auth: inputs});
-    buttonAuth.innerText = 'Изменить';
+    authData = inputs;
+    buttonAuth.innerText = 'Change';
     blockOrderCreate.classList.remove('none');
 
   })
@@ -143,8 +154,9 @@
 
 
     let res =  createPay(inputs);
-    createElement(res);
+    // createElement(res);
     addLists(res);
+    document.querySelector('#lists').classList.remove('none');
   });
 
   function addLists(add){
@@ -189,11 +201,11 @@
       if(data.lists){
         for(let key in data.lists){
           str += `<tr>
-            <th scope="row">${key + 1}</th>
-            <td><button class="btn btn-primary" data-open='${JSON.stringify(data.lists[key])}'>Открыть</button></td>
+            <th scope="row">${(parseInt(key) + 1)}</th>
+            <td><button class="btn btn-primary" data-open='${JSON.stringify(data.lists[key])}'>Open</button></td>
             <td>${data.lists[key]['time']}</td>
             <td>
-              <button type="button"  class="btn btn-danger" data-delete="${data.lists[key]['order_id']}">Удалить</button>
+              <button type="button"  class="btn btn-danger" data-delete="${data.lists[key]['order_id']}">Delete</button>
             </td>
           </tr>`;
         }
@@ -246,5 +258,19 @@
     }
   }
 
+
+  document.querySelector('#auth').addEventListener('input', function(e){
+    if(e.target.tagName.toLowerCase() === 'input'){
+      chrome.storage.local.get(['state'], function(data) {
+        let   state = {};
+        if(data.state && Object.keys(data.state).length > 0){
+          state = data.state;
+        }
+
+        state[e.target.name] = e.target.value.trim();
+        chrome.storage.local.set({state});
+      })
+    }
+  })
 
 })();

@@ -10,36 +10,13 @@
   </head>
   <body>
     <div id="wrapper">
-      <div class="auth-block" id="auth">
-
-        <div class="container">
-
-          <label for="basic-url" class="form-label"> <b>Ключи:</b> </label>
-          <div class="input-group mb-3">
-            <span class="input-group-text" id="basic-addon3">Public KEY</span>
-            <input type="text" placeholder="Публичный ключ (id) вашего магазина" name="shop_id"  class="form-control" id="basic-url" aria-describedby="basic-addon3">
-          </div>
-           <div class="input-group mb-3">
-            <span class="input-group-text" id="basic-addon4">Secret KEY</span>
-            <input type="text" placeholder="Введите SECRET KEY"  class="form-control" name="secret_key"  id="basic-url" aria-describedby="basic-addon4">
-          </div>
-          <div class="input-group mb-3">
-            <span class="input-group-text" id="basic-addon5">API KEY</span>
-            <input placeholder="Введите API KEY"  type="text" class="form-control" name="api_key" id="basic-url" aria-describedby="basic-addon5">
-          </div>
-
-          <div id="validationAuthFeedback" class="invalid-feedback"></div>
-          <button type="button" id="Authorization" class="btn btn-primary">Войти</button>
-        </div>
-      </div>
-
 
       <div class="auth-block none" id="orderCreate">
 
         <div class="container">
-          <label for="basic-url" class="form-label"> <b>Выставить счет:</b> </label>
+          <label for="basic-url" class="form-label"> <b>Bill:</b> </label>
           <div class="input-group mb-3">
-            <span class="input-group-text" id="basic-addon7">Валюта</span>
+            <span class="input-group-text" id="basic-addon7">Currency</span>
 
             <select class="form-select" name="currency"  aria-label="Default select example" aria-describedby="basic-addon7">
               <option selected>RUB</option>
@@ -49,44 +26,64 @@
           </div>
 
           <div class="input-group mb-3">
-            <span class="input-group-text" id="basic-addon15">Стоимость</span>
-            <input placeholder="Введите сумму"  type="number" class="form-control" name="amount"  aria-describedby="basic-addon15">
+            <span class="input-group-text" id="basic-addon15">Amount</span>
+            <input placeholder="Enter amount"  type="number" class="form-control" name="amount"  aria-describedby="basic-addon15">
+          </div>
+
+          <div class="input-group mb-3">
+            <span class="input-group-text" id="basic-addon15">Order Id</span>
+            <input placeholder="Enter Order Id"  type="text" class="form-control" name="orderId"  aria-describedby="basic-addon15">
           </div>
 
           <div id="validationCreateOrderFeedback" class="invalid-feedback"></div>
-          <button type="button" id="create" class="btn btn-primary">Сгенерировать счет</button>
+          <button type="button" id="create" class="btn btn-primary">Generate invoice</button>
         </div>
       </div>
 
 
-      <div class="auth-block " id="lists">
+      <div class="auth-block none" id="lists">
 
         <div class="container">
-          <label for="basic-url" class="form-label"> <b>Счета на оплату:</b> </label>
+          <label for="basic-url" class="form-label"> <b>Invoices for payment:</b> </label>
           <table class="table">
             <thead>
               <tr>
                 <th scope="col">#</th>
-                <th scope="col">Счет на оплату</th>
-                <th scope="col">Время</th>
-                <th scope="col">Действие</th>
+                <th scope="col">An invoice for payment</th>
+                <th scope="col">Time</th>
+                <th scope="col">Action</th>
               </tr>
             </thead>
-            <tbody>
-              <!-- <tr>
-                <th scope="row">1</th>
-                <td><button class="btn btn-primary" data-open="">Открыть</button></td>
-                <td>Otto</td>
-                <td>
-                  <button type="button"  class="btn btn-danger" data-delete="">Удалить</button>
-                </td>
-              </tr> -->
-
-            </tbody>
+            <tbody></tbody>
           </table>
 
         </div>
       </div>
+      <div class="auth-block" id="auth">
+
+        <div class="container">
+
+          <label for="basic-url" class="form-label"> <b>Keys:</b> </label>
+          <div class="input-group mb-3">
+            <span class="input-group-text" id="basic-addon3">Public KEY</span>
+            <input type="text" placeholder="Public key (id) of your store" name="shop_id"  class="form-control" id="basic-url" aria-describedby="basic-addon3">
+          </div>
+           <div class="input-group mb-3">
+            <span class="input-group-text" id="basic-addon4">Secret KEY</span>
+            <input type="text" placeholder="Enter SECRET KEY"  class="form-control" name="secret_key"  id="basic-url" aria-describedby="basic-addon4">
+          </div>
+          <div class="input-group mb-3">
+            <span class="input-group-text" id="basic-addon5">API KEY</span>
+            <input placeholder="Enter API KEY"  type="text" class="form-control" name="api_key" id="basic-url" aria-describedby="basic-addon5">
+          </div>
+
+          <div id="validationAuthFeedback" class="invalid-feedback"></div>
+          <button type="button" id="Authorization" class="btn btn-primary">Login</button>
+        </div>
+      </div>
+
+
+
 
     </div>
 
